@@ -3,12 +3,15 @@ from django.db import models
 
 
 class CustomMember(AbstractUser):
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
     is_worker = models.BooleanField(default=False)
     phone_number = models.CharField(max_length=10)
-
+    username = None
 
 class Worker(models.Model):
-    member = models.OneToOneField(CustomMember, on_delete=models.CASCADE)
+    member = models.OneToOneField(CustomMember, on_delete=models.CASCADE, related_name='worker')
     # category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # rating = models.ForeignKey(Review, on_delete=models.CASCADE)
     is_premium = models.BooleanField(default=False)

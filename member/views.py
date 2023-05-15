@@ -2,9 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from member.forms import CustomMemberForm
-from member.models import CustomMember
-
-
+from member.models import CustomMember, Worker
 
 
 class CustomMemberCreateView(CreateView):
@@ -21,6 +19,9 @@ class CustomMemberCreateView(CreateView):
             is_worker = form.cleaned_data['is_worker']
             if is_worker:
                 new_user.is_worker = True
-            new_user.save()
+                new_user.save()
+                Worker.objects.create(member=new_user)
+            else:
+                new_user.save()
 
         return redirect('homepage')

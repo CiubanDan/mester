@@ -27,19 +27,34 @@
             </div>
             <a href="#" class="nav-item nav-link">Contact</a>
         </ul>
-        <ul class="navbar-nav ms-auto justify-content-center text-center">
-            <li class="nav-item d-lg-none">
-                <a href="#" class="btn btn-outline-success rounded-2 logare-btn ">Log in</a>
-            </li>
-            <li class="nav-item d-lg-none">
-                <a href="{% url 'create_user' %}" class="btn btn-success rounded-2 register-btn">Sign up</a>
-            </li>
-            <li class="nav-item d-none d-lg-block">
-                <a href="#" class="btn btn-outline-success rounded-2 py-4 px-lg-4 me-1 login ">Log in</a>
-            </li>
-            <li class="nav-item d-none d-lg-block ">
-                <a href="{% url 'create_user' %}" class="btn btn-success rounded-2 py-4 px-lg-4 me-1  signin ">Sign up</a>
-            </li>
-        </ul>
+            <ul class="navbar-nav ms-auto justify-content-center text-center">
+                {% if user.is_authenticated %}
+            <div class="dropdown ">
+                <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    My account, {{ request.user.first_name }}
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+            {% else %}
+                <li class="nav-item d-lg-none">
+                    <a href="{% url 'login' %}" class="btn btn-outline-success rounded-2 logare-btn ">Log in</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a href="{% url 'create_user' %}" class="btn btn-success rounded-2 register-btn">Sign up</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                    <a href="{% url 'login' %}" class="btn btn-outline-success rounded-2 py-4 px-lg-4 me-1 login ">Log
+                        in</a>
+                </li>
+                <li class="nav-item d-none d-lg-block ">
+                    <a href="{% url 'create_user' %}" class="btn btn-success rounded-2 py-4 px-lg-4 me-1  signin ">Sign
+                        up</a>
+                </li>
+            </ul>
+        {% endif %}
     </div>
 </nav>
