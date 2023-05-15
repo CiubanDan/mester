@@ -52,3 +52,4 @@ class AuthenticationNewForm(AuthenticationForm):
         self.fields['password'].widget.attrs.update(
             {'class': 'form-control', "placeholder": 'Enter your Password'}
         )
+
