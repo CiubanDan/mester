@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.forms import  TextInput, EmailInput
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
+from django.forms import TextInput, EmailInput
 
 from member.models import CustomMember
 
@@ -52,4 +52,15 @@ class AuthenticationNewForm(AuthenticationForm):
         self.fields['password'].widget.attrs.update(
             {'class': 'form-control', "placeholder": 'Enter your Password'}
         )
+
+
+class PasswordChangeNewForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].widget.attrs.update(
+            {'class': 'form-control', "placeholder": 'Add your current password'})
+        self.fields['new_password1'].widget.attrs.update(
+            {'class': 'form-control', "placeholder": 'Add your new password'})
+        self.fields['new_password2'].widget.attrs.update(
+            {'class': 'form-control', "placeholder": 'Add your new password'})
 
