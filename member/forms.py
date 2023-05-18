@@ -1,22 +1,23 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
-from django.forms import TextInput, EmailInput
+from django.forms import TextInput, EmailInput, Select
 
 from member.models import CustomMember
 
 
 class CustomMemberForm(UserCreationForm):
-    member_type = ((False, 'Member'), (True, "Worker"))
-    is_worker = forms.ChoiceField(choices=member_type, widget=forms.Select(attrs={'class': "form-control"}))
+    # member_type = ((False, 'Member'), (True, "Worker"))
+    # is_worker = forms.ChoiceField(choices=member_type, widget=forms.Select(attrs={'class': "form-control"}))
 
     class Meta:
         model = CustomMember
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = ['first_name', 'last_name', 'email', 'phone_number','is_worker']
         widgets = {
             'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your First Name'}),
             'last_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Last Name'}),
             'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your EMAIL'}),
-            'phone_number': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your PhoneNumber'})
+            'phone_number': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your PhoneNumber'}),
+            'is_worker': Select(attrs={'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):

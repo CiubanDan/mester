@@ -10,6 +10,7 @@ class Job(models.Model):
     job_description = models.CharField(max_length=255)
     location = models.CharField(max_length=50)
     price = models.IntegerField()
+    contact_number = models.IntegerField(null=True)
 
 
 class Contract(models.Model):

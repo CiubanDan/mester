@@ -27,6 +27,7 @@ class CustomMemberCreateView(CreateView):
                 new_user.save()
                 Worker.objects.create(member=new_user)
             else:
+                new_user.is_worker = False
                 new_user.save()
 
         return redirect('homepage')
@@ -41,5 +42,5 @@ class MemberListView(ListView):
         """
         This query returns only members that are NOT workers
         """
-        return CustomMember.objects.filter(is_worker=False)
+        return CustomMember.objects.filter(is_worker=True)
 

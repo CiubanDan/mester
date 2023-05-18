@@ -6,9 +6,11 @@ class CustomMember(AbstractUser):
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    is_worker = models.BooleanField(default=False)
+    member_type = ((False, 'Member'), (True, "Worker"))
+    is_worker = models.BooleanField(choices=member_type)
     phone_number = models.CharField(max_length=10)
     username = None
+
 
 
 class Category(models.Model):
@@ -17,7 +19,7 @@ class Category(models.Model):
 
 class Worker(models.Model):
     member = models.OneToOneField(CustomMember, on_delete=models.CASCADE, related_name='worker')
-    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     is_premium = models.BooleanField(default=False)
     is_banned = models.BooleanField(default=False)
 
