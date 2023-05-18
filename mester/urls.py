@@ -24,6 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('home.urls')),
     path('', include('member.urls')),
+    path('', include('job.urls')),
     path('login/', views.LoginView.as_view(form_class=AuthenticationNewForm), name='login'),
     path('password-change/', views.PasswordChangeView.as_view(form_class=PasswordChangeNewForm), name='password_change'),
     path('', include('django.contrib.auth.urls')),
