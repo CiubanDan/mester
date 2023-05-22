@@ -5,29 +5,28 @@
 
 {% block content %}
     <div class="container-fluid">
+    <div class="col-md-6 offset-md-3">
         <div class="row">
-
-                <table class="table border-dark">
-                    <thead>
+            <table class="table border-dark">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for member in all_members %}
                     <tr>
-                        <th>First Name</th>
-                        <th>Second Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
+                        <td>{{ member.first_name }}</td>
+                        <td>{{ member.last_name }}</td>
+                        <td><a href="{% url 'detail_member' member.id %}" type="button" class="btn btn-outline-info">Info</a>
+                            </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {% for member in all_members %}
-                        <tr>
-                            <td>{{ member.first_name }}</td>
-                            <td>{{ member.last_name }}</td>
-                            <td>{{ member.email }}</td>
-                            <td>{{ member.phone_number }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
         </div>
     </div>
 

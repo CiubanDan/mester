@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+
+{% block title %}Worker List{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-md-6 offset-md-3">
+            <div class="row">
+                <table class="table border-dark">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for worker in all_workers %}
+                        <tr>
+                            <td>{{ worker}}</td>
+                            <td>{{ worker.category}}</td>
+                            <td><a href="{% url 'detail_worker' worker.id %}" type="button" class="btn btn-outline-info">Info</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

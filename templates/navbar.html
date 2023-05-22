@@ -21,7 +21,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Workers</a>
                 <div class="dropdown-menu rounded-0 m-0 justify-content-center text-center">
-                    <a href="{% url 'member_list' %}" class="dropdown-item">Workers List</a>
+                    <a href="{% url 'worker_list' %}" class="dropdown-item">Workers List</a>
+                    <a href="{% url 'member_list' %}" class="dropdown-item">Members List</a>
                     <a href="#" class="dropdown-item">Post Your Service</a>
                 </div>
             </div>
@@ -35,6 +36,7 @@
                     My account, {{ request.user.first_name }}
                 </button>
                 <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'detail_account' %}">My account</a></li>
                     <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                 </ul>

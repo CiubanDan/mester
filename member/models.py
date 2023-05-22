@@ -11,17 +11,27 @@ class CustomMember(AbstractUser):
     phone_number = models.CharField(max_length=10)
     username = None
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 
 class Category(models.Model):
     category_name = models.CharField(max_length=50, null=True)
 
+    def __str__(self):
+        return f'{self.category_name}'
+
 
 class Worker(models.Model):
     member = models.OneToOneField(CustomMember, on_delete=models.CASCADE, related_name='worker')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    about_me = models.CharField(max_length=255, null=True)
     is_premium = models.BooleanField(default=False)
     is_banned = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.member.first_name} {self.member.last_name}"
 
 
 class Review(models.Model):

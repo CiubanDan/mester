@@ -18,7 +18,9 @@ class CustomMemberForm(UserCreationForm):
             'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your EMAIL'}),
             'phone_number': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your PhoneNumber'}),
             'is_worker': Select(attrs={'class': 'form-control'}),
+            # 'about_me': TextInput(attrs={'class':'form-control', 'placeholder': 'Describe your profession'})
         }
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -26,6 +28,9 @@ class CustomMemberForm(UserCreationForm):
             {'class': 'form-control', 'placeholder': 'Please enter your password'}),
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Please re-enter your password'})
+
+        self.fields['is_worker'].label = 'Status'
+
 
     def clean(self):
         """
