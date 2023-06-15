@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}List of Jobs{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-md-6 offset-md-3">
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Location</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for job in all_jobs %}
+                        <tr>
+                            <td>{{ job.title }}</td>
+                            <td>{{ job.location }}</td>
+                            <td>{{ job.category_type }}</td>
+                            <td>{{ job.status}}</td>
+                            <td><a href="{% url 'detail-job' job.id %}" type="button" class="btn btn-outline-info">More Info</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

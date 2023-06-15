@@ -7,7 +7,7 @@ class CustomMember(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     member_type = ((False, 'Member'), (True, "Worker"))
-    is_worker = models.BooleanField(choices=member_type)
+    is_worker = models.BooleanField(choices=member_type, default=False)
     phone_number = models.CharField(max_length=10)
     username = None
 
@@ -24,14 +24,15 @@ class Category(models.Model):
 
 
 class Worker(models.Model):
-    member = models.OneToOneField(CustomMember, on_delete=models.CASCADE, related_name='worker')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    member = models.ForeignKey(CustomMember, on_delete=models.CASCADE, related_name='worker')
+    worker_category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     about_me = models.CharField(max_length=255, null=True)
     is_premium = models.BooleanField(default=False)
     is_banned = models.BooleanField(default=False)
 
+
     def __str__(self):
-        return f"{self.member.first_name} {self.member.last_name}"
+        return f"{self.member.first_name} {self.member.last_name} {self.about_me}"
 
 
 class Review(models.Model):

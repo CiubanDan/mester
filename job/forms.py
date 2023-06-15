@@ -5,13 +5,13 @@ from member.models import Category
 
 
 class JobCreateForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all(),
-                                      widget=forms.Select(attrs={'class': 'form-control'}))
+    # category = forms.ModelChoiceField(queryset=Category.objects.all(),
+    #                                   widget=forms.Select(attrs={'class': 'form-control'}))
     status = forms.CharField(disabled=True, initial='Open')
 
     class Meta:
         model = Job
-        fields = ['title', 'job_description', 'location', 'price', 'status', 'contact_number']
+        fields = ['title', 'job_description', 'location', 'price', 'status', 'contact_number', 'category_type']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a title'}),
             'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add the location'}),
@@ -20,9 +20,12 @@ class JobCreateForm(forms.ModelForm):
             'price': forms.TextInput(attrs={'class': 'form-control', 'suffix': 'RON'}),
             'contact_number': forms.NumberInput(
                 attrs={'class': 'form-control', 'placeholder': 'Insert your contact Number'}),
+            'category_type': forms.Select(attrs={'class': 'form-control'})
 
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['price'].label = 'Price (RON)'
+
+

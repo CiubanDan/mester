@@ -10,14 +10,17 @@
                 <div class="card-header">
                     View Details
                 </div>
+
                 <div class="card-body">
                     <h5 class="card-title">{{ custommember }}</h5>
                     <p class="card-text">Email:{{ custommember.email }}</p>
-                    <p class="card-text">About Me:{{ custommember.about_me }}</p>
+                    <p class="card-text">About Me:{{ worker.about_me }}</p>
                     <p class="card-text">PhoneNumber:{{ custommember.phone_number }}</p>
-                    <p class="card-text">Category:{{ custommember.category_name }}</p>
+                    <p class="card-text">Category:{{ worker.worker_category}}</p>
+
                     <a href="{% url 'worker_list' %}" class="btn btn-primary">Cancel</a>
                 </div>
+
                 <div class="card-footer"></div>
             </div>
         </div>

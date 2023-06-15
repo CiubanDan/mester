@@ -4,24 +4,21 @@
 
 {% block content %}
     <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card text-center">
-                <div class="card-header">
-                    View Details
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <div class="card-header">
+                        View Details
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.name }}</h5>
+                        <p class="card-text">Email:{{ user.email }}</p>
+                        <p class="card-text">PhoneNumber:{{ user.phone_number }}</p>
+                        <a href="{% url 'member_list' %}" class="btn btn-primary">Cancel</a>
+                    </div>
+                    <div class="card-footer"></div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ custommember }}</h5>
-                    <p class="card-text">Member Email:{{ custommember.email }}</p>
-                    <p class="card-text">Member PhoneNumber:{{ custommember.phone_number }}</p>
-                    <a href="{% url 'member_list' %}" class="btn btn-primary">Cancel</a>
-                </div>
-                <div class="card-footer"></div>
             </div>
         </div>
     </div>
-    </div>
-
-
-
 {% endblock %}

@@ -14,7 +14,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                 <div class="dropdown-menu rounded-0 m-0 justify-content-center text-center">
-                    <a href="#" class="dropdown-item">Job List</a>
+                    <a href="{% url 'list-jobs' %}" class="dropdown-item">Job List</a>
                     <a href="{% url 'create-job' %}" class="dropdown-item">Post Jobs</a>
                 </div>
             </div>
@@ -22,7 +22,6 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Workers</a>
                 <div class="dropdown-menu rounded-0 m-0 justify-content-center text-center">
                     <a href="{% url 'worker_list' %}" class="dropdown-item">Workers List</a>
-                    <a href="{% url 'member_list' %}" class="dropdown-item">Members List</a>
                     <a href="#" class="dropdown-item">Post Your Service</a>
                 </div>
             </div>
@@ -46,14 +45,15 @@
                     <a href="{% url 'login' %}" class="btn btn-outline-success rounded-2 logare-btn ">Log in</a>
                 </li>
                 <li class="nav-item d-lg-none">
-                    <a href="{% url 'create_user' %}" class="btn btn-success rounded-2 register-btn">Sign up</a>
+                    <a href="{% url 'create_worker' %}" class="btn btn-success rounded-2 register-btn">Sign up</a>
+                    <a href="{% url 'create_member' %}" class="btn btn-success rounded-2 register-btn">Sign up</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                     <a href="{% url 'login' %}" class="btn btn-outline-success rounded-2 py-4 px-lg-4 me-1 login ">Log
                         in</a>
                 </li>
                 <li class="nav-item d-none d-lg-block ">
-                    <a href="{% url 'create_user' %}" class="btn btn-success rounded-2 py-4 px-lg-4 me-1  signin ">Sign
+                    <a href="{% url 'create_worker' %}" class="btn btn-success rounded-2 py-4 px-lg-4 me-1  signin ">Sign
                         up</a>
                 </li>
             </ul>

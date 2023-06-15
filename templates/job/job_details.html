@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ job }} details{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <div class="card text-center">
+                <div class="card-header">
+                    {{ job }} details
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ job.title }}</h5>
+                    <p>Description:</p>
+                    <p class="card-text">{{ job.job_description }}</p>
+                    <p>Category:</p>
+                    <p class="card-text">{{ job.category_type }}</p>
+                    <p class="card-text">{{ job.member }}</p>
+                    <p class="card-text">{{ job.location }}</p>
+                    <p class="card-text">{{ job.price }}</p>
+                    <p class="card-text">{{ job.contact_number | stringformat:"010d" }}</p>
+                    {% if job.status != 'In Progress' %}
+                    <form id="acceptJobForm" action="{% url 'detail-job' pk=job.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary" id="acceptJobButton">Accept Job</button>
+                    </form>
+                    {% endif %}
+
+                </div>
+                <div class="card-footer text-body-secondary"><p>Job Status:{{ job.status }}</p>
+                    <p>Job taken by: {{ contrat.worker }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
